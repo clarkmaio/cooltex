@@ -1,0 +1,125 @@
+
+\usepackage[HTML]{xcolor}
+\usepackage[skins]{tcolorbox}
+\usepackage{tikz}
+\usepackage{fourier}
+\usepackage{xparse}
+
+\usepackage{amsmath}
+\usepackage{mathtools} 
+\usepackage{etoolbox}
+
+
+% --------------------------- PAGE STYLE
+\definecolor{yorhabg}{HTML}{ffffff} %C8C2AA
+\definecolor{yorhafg}{HTML}{4D493E}
+\definecolor{yorhagrid}{HTML}{B5AF9C}
+\definecolor{gruvred}{HTML}{91221D}
+
+% Margin
+\leftmargin=6cm
+\rightmargin=6cm
+\usepackage[left=\leftmargin, right=\rightmargin]{geometry} 
+
+% Background color
+\pagecolor{yorhabg} 
+
+% Box style
+\newcommand{\boxarc}{3pt}
+\newcommand{\boxshadow}{southeast}
+
+
+
+
+
+%  ----------------------------- NEW LINE
+%\setlength{\parindent}{0pt} % Indentation
+\setlength{\parskip}{1.5ex} % New line space
+
+
+
+% ---------------------------- Theorems
+\newtheorem{theorem}{theorem}[section]
+\newtheorem{corollary}{corollary}[theorem]
+\newtheorem{lemma}[theorem]{lemma}
+
+
+
+% ----------------------------- Box
+
+\newtcolorbox{titlebox}[1]{%
+    enhanced,
+    colback=yorhabg,
+    colframe=yorhafg,
+    coltext=yorhafg,
+    coltitle=yorhabg,
+    title=\textbf{#1},
+    arc=\boxarc,
+    outer arc=\boxarc,
+    drop shadow \boxshadow,
+    %sharp corners
+}
+
+
+\newtcolorbox{simplebox}{%
+    enhanced,
+    colback=yorhabg,
+    colframe=yorhafg,
+    coltext=yorhafg,
+    coltitle=yorhabg,
+    arc=\boxarc,
+    outer arc=\boxarc,
+    drop shadow \boxshadow,
+    %sharp corners
+}
+
+
+% ----------------------------------- Layout
+
+
+% --------------------------- Differential equations
+
+\newcommand{\doty}{\dot{y}}
+\newcommand{\ddoty}{\ddot{y}}
+\newcommand{\dotu}{\dot{u}}
+\newcommand{\ddotu}{\ddot{u}}
+\newcommand{\dotv}{\dot{v}}
+\newcommand{\ddotv}{\ddot{v}}
+
+
+\newcommand{\foode}[3]{
+\left\{
+    \begin{array}{rcl}
+        \doty & = & #1 \\
+        y(#2) & = & #3
+    \end{array}
+\right.
+}
+
+
+\newcommand{\ode}[2]{%
+\left\{
+    \begin{align*}
+        & #1 \\
+        & #2
+    \end{align*}
+\right.
+}
+
+
+% ------------------------ Optimisation 
+
+\newcommand{\constraint}[1]{%
+     & #1 \\
+}
+
+
+% Definizione della macro \lp
+\newcommand{\lp}[3]{
+    \begin{array}{rl}
+     #1 & #2 \\
+     \\
+     \text{s.t.} & \\
+     \forcsvlist{\constraint}{#3}     
+    \end{array}
+}
