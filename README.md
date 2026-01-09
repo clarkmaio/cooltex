@@ -3,10 +3,16 @@ Collection of useful latex macros
 
 Just add `cooltex.sty` in your latex project.
 
+> [!NOTE]
+> Remember to add `\usepackage{cooltex}` on top of your latex document!
+
+
+
 
 
 ## Tiny demo
 ```latex
+\usepackage{cooltex}
 
 \begin{simplebox}
 
