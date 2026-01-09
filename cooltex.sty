@@ -8,13 +8,24 @@
 \usepackage{amsmath}
 \usepackage{mathtools} 
 \usepackage{etoolbox}
+\usepackage{minted}
+\usepackage{pgfkeys}
+
+\tcbuselibrary{minted, skins}
 
 
 % --------------------------- PAGE STYLE
+\definecolor{black}{HTML}{000000}
+\definecolor{white}{HTML}{ffffff}
+
 \definecolor{yorhabg}{HTML}{ffffff} %C8C2AA
 \definecolor{yorhafg}{HTML}{4D493E}
 \definecolor{yorhagrid}{HTML}{B5AF9C}
 \definecolor{gruvred}{HTML}{91221D}
+
+\definecolor{codebg}{HTML}{000000}
+\definecolor{codeframe}{HTML}{4D493E}
+
 
 % Margin
 \leftmargin=6cm
@@ -73,6 +84,47 @@
     %sharp corners
 }
 
+% ----------------------------- Code
+
+\pgfkeys{
+ /codebox/.is family, /codebox,
+ language/.estore in  = \cbLang,
+ highlight/.estore in = \cbHigh,
+ rownumber/.estore in    = \cbRowNumber,
+ shadow/.is choice,
+ shadow/true/.code    = {\def\cbShadow{drop shadow \boxshadow}},
+ shadow/false/.code   = {\def\cbShadow{no shadow}},
+ language=text,
+ highlight={},
+ rownumber=true,
+ shadow=true,
+}
+
+\newtcblisting{codebox}[1]{
+    code={\pgfkeys{/codebox,#1}},
+    enhanced,
+    colback=codebg,
+    colframe=codeframe,
+    arc=\boxarc,
+    outer arc=\boxarc,
+    \cbShadow,
+    boxrule=1pt,
+    colupper=white,
+    boxsep=5pt,
+    listing engine=minted,
+    minted language=\cbLang,
+    minted options={
+        linenos=\cbRowNumber,
+        style=native,
+        fontsize=\small,
+        breaklines,
+        numbersep=10pt,
+        bgcolor=codebg,
+        highlightlines=\cbHigh,
+        highlightcolor=yorhafg
+    },
+    listing only,
+}
 
 % ----------------------------------- Layout
 
