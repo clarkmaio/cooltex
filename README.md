@@ -57,7 +57,7 @@ You can wrap boxes!
 ```
 
 <p align="center">
-<img width="760" height="1067" alt="image" src="https://github.com/user-attachments/assets/1b8c296e-606b-4b78-a978-40830da4a5e1" />
+<img width="584" height="800" alt="image" src="https://github.com/user-attachments/assets/7f33ed3b-6bee-4263-a081-6fd73471195e" />
 </p>
 
 
