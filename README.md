@@ -7,6 +7,7 @@ Just add `cooltex.sty` in your latex project.
 
 ## Tiny demo
 ```latex
+
 \begin{simplebox}
 
 \[
@@ -29,9 +30,36 @@ This is a linear programming problem with a title:
   }
 \]
 \end{titlebox}
+
+
+
+\begin{codebox}{language=python, shadow=true}
+df = pd.DataFrame()
+
+def f(x,y):
+    return x+y
+\end{codebox}
+
+
+\begin{simplebox}
+
+Code inside a simplebox
+
+You can easily remove shadow and rownumber
+
+\begin{codebox}{language=cpp, rownumber=false, shadow=false, highlight={3}}
+int x = 5;
+\end{codebox}
+
+You can wrap boxes!
+
+\end{simplebox}
 ```
 
 <p align="center">
-<img width="787" height="606" alt="image" src="https://github.com/user-attachments/assets/272753bc-911c-44ee-9855-95f3db4f8338" />
+<img width="760" height="1067" alt="image" src="https://github.com/user-attachments/assets/1b8c296e-606b-4b78-a978-40830da4a5e1" />
 </p>
+
+
+
 
