@@ -1,0 +1,179 @@
+
+\usepackage[HTML]{xcolor}
+\usepackage[skins]{tcolorbox}
+\usepackage{tikz}
+\usepackage{fourier}
+\usepackage{xparse}
+
+\usepackage{amsmath}
+\usepackage{mathtools} 
+\usepackage{etoolbox}
+\usepackage{minted}
+\usepackage{pgfkeys}
+
+\tcbuselibrary{minted, skins}
+
+
+% --------------------------- PAGE STYLE
+\definecolor{black}{HTML}{000000}
+\definecolor{white}{HTML}{ffffff}
+
+\definecolor{yorhabg}{HTML}{ffffff} %C8C2AA
+\definecolor{yorhafg}{HTML}{4D493E}
+\definecolor{yorhagrid}{HTML}{B5AF9C}
+\definecolor{gruvred}{HTML}{91221D}
+
+\definecolor{codebg}{HTML}{000000}
+\definecolor{codeframe}{HTML}{4D493E}
+
+
+% ----------------------------------------- PAGE DESIGN
+\leftmargin=6cm
+\rightmargin=6cm
+\usepackage[left=\leftmargin, right=\rightmargin]{geometry} 
+
+% Background color
+\pagecolor{yorhabg} 
+
+% Box style
+\newcommand{\boxarc}{3pt}
+\newcommand{\boxshadow}{southeast}
+
+
+
+
+
+%  ----------------------------- NEW LINE
+%\setlength{\parindent}{0pt} % Indentation
+\setlength{\parskip}{1.5ex} % New line space
+
+
+
+% ---------------------------- Theorems
+\newtheorem{theorem}{theorem}[section]
+\newtheorem{corollary}{corollary}[theorem]
+\newtheorem{lemma}[theorem]{lemma}
+
+
+
+% ----------------------------- Box
+
+\newtcolorbox{titlebox}[1]{%
+    enhanced,
+    colback=yorhabg,
+    colframe=yorhafg,
+    coltext=yorhafg,
+    coltitle=yorhabg,
+    title=\textbf{#1},
+    arc=\boxarc,
+    outer arc=\boxarc,
+    drop shadow \boxshadow,
+    %sharp corners
+}
+
+
+\newtcolorbox{simplebox}{%
+    enhanced,
+    colback=yorhabg,
+    colframe=yorhafg,
+    coltext=yorhafg,
+    coltitle=yorhabg,
+    arc=\boxarc,
+    outer arc=\boxarc,
+    drop shadow \boxshadow,
+    %sharp corners
+}
+
+% ----------------------------- Code
+
+\pgfkeys{
+ /codebox/.is family, /codebox,
+ language/.estore in  = \cbLang,
+ highlight/.estore in = \cbHigh,
+ rownumber/.estore in    = \cbRowNumber,
+ shadow/.is choice,
+ shadow/true/.code    = {\def\cbShadow{drop shadow \boxshadow}},
+ shadow/false/.code   = {\def\cbShadow{no shadow}},
+ language=text,
+ highlight={},
+ rownumber=true,
+ shadow=true,
+}
+
+\newtcblisting{codebox}[1]{
+    code={\pgfkeys{/codebox,#1}},
+    enhanced,
+    colback=codebg,
+    colframe=codeframe,
+    arc=\boxarc,
+    outer arc=\boxarc,
+    \cbShadow,
+    boxrule=1pt,
+    colupper=white,
+    boxsep=5pt,
+    listing engine=minted,
+    minted language=\cbLang,
+    minted options={
+        linenos=\cbRowNumber,
+        style=native,
+        fontsize=\small,
+        breaklines,
+        numbersep=10pt,
+        bgcolor=codebg,
+        highlightlines=\cbHigh,
+        highlightcolor=yorhafg
+    },
+    listing only,
+}
+
+% ----------------------------------- Layout
+
+
+
+
+% --------------------------- Differential equations
+
+\newcommand{\doty}{\dot{y}}
+\newcommand{\ddoty}{\ddot{y}}
+\newcommand{\dotu}{\dot{u}}
+\newcommand{\ddotu}{\ddot{u}}
+\newcommand{\dotv}{\dot{v}}
+\newcommand{\ddotv}{\ddot{v}}
+
+
+\newcommand{\foode}[3]{
+\left\{
+    \begin{array}{rcl}
+        \doty & = & #1 \\
+        y(#2) & = & #3
+    \end{array}
+\right.
+}
+
+
+\newcommand{\ode}[2]{%
+\left\{
+    \begin{align*}
+        & #1 \\
+        & #2
+    \end{align*}
+\right.
+}
+
+
+% ------------------------ Optimisation 
+
+\newcommand{\constraint}[1]{%
+     & #1 \\
+}
+
+
+% Definizione della macro \lp
+\newcommand{\lp}[3]{
+    \begin{array}{rl}
+     #1 & #2 \\
+     \\
+     \text{s.t.} & \\
+     \forcsvlist{\constraint}{#3}     
+    \end{array}
+}

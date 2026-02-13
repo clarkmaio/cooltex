@@ -1,0 +1,67 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{cooltex}
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{minted}
+
+
+
+\title{cooltex demo}
+%\author{Andrea Maioli}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+
+\begin{simplebox}
+
+\[
+\foode{x^2 + x}{0}{2}
+\]
+
+This is how you write an ode with a single command
+\end{simplebox}
+
+Just some text for reference...
+
+\begin{titlebox}{Linear programming problem}
+This is a linear programming problem with a title:
+
+\[
+  \lp{\min_c}{c^Tx}{
+    x \geq 0,
+    AX > b,
+    CX < d  
+  }
+\]
+\end{titlebox}
+
+
+
+\begin{codebox}{language=python, shadow=true}
+df = pd.DataFrame()
+
+def f(x,y):
+    return x+y
+\end{codebox}
+
+
+\begin{simplebox}
+
+Code inside a simplebox
+
+You can easily remove shadow and rownumber
+
+\begin{codebox}{language=cpp, rownumber=false, shadow=false, highlight={3}}
+int x = 5;
+\end{codebox}
+
+You can wrap boxes!
+
+\end{simplebox}
+
+
+\end{document}
