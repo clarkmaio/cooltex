@@ -23,7 +23,7 @@ jobs:
           compiler: xelatex
           # Ensure fonts are found if they are in a local directory
           args: -interaction=nonstopmode -halt-on-error -shell-escape
-          pre_compile: "apk add --no-cache python3 py3-pip && pip3 install Pygments && rm -rf _minted-demo"
+          pre_compile: "apk add --no-cache py3-pygments"
 
       - name: Upload PDF
         uses: actions/upload-artifact@v4
