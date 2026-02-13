@@ -1,0 +1,43 @@
+name: Build Resume
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compile Resume
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: demo.tex
+          # The template uses xelatex
+          compiler: xelatex
+          # Ensure fonts are found if they are in a local directory
+          args: -interaction=nonstopmode -halt-on-error -shell-escape
+
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: demo
+          path: demo.pdf
+
+      - name: Commit and push PDF
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add demo.pdf
+          if git diff --staged --quiet; then
+            echo "No changes in demo.pdf"
+          else
+            git commit -m "update demo.pdf"
+            git push
+          fi
