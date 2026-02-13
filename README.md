@@ -62,8 +62,10 @@ You can wrap boxes!
 \end{simplebox}
 ```
 
+
+
 <p align="center">
-<img width="584" height="800" alt="image" src="https://github.com/user-attachments/assets/7f33ed3b-6bee-4263-a081-6fd73471195e" />
+<img width="519" height="668" alt="image" src="https://github.com/user-attachments/assets/93c7addf-3573-457b-bf93-dd1b0de3169f" />
 </p>
 
 
